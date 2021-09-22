@@ -47,17 +47,18 @@ public class CardGameSim : UnityEngine.MonoBehaviour
     private void LateUpdate()
     {
         simCompletionHandle.Complete();
+
         DrawDebugString(deckDebug, nGamesToDrawDebugLogs, simData.deckSize, simData.deckCount, simData.decks);
         DrawDebugString(handDebug, nGamesToDrawDebugLogs, simData.handSize, simData.handCount, simData.hands);
         DrawDebugString(inPlayDebug, nGamesToDrawDebugLogs, simData.maxCardsInPlay, simData.inPlayCount, simData.inPlay);
         DrawDebugString(attribute1Debug, nGamesToDrawDebugLogs, simData.maxCardsInPlay, simData.inPlayCount, simData.cardAttributes1);
     }
 
-    private void DrawDebugString<T>(Text textField, int nToDrawn, int maxSize, NativeArray<byte> varCount, NativeArray<T> vars) where T : struct
+    private void DrawDebugString<T>(Text textField, int nToDraw, int maxSize, NativeArray<byte> varCount, NativeArray<T> vars) where T : struct
     {
         StringBuilder sb = new StringBuilder();
             
-        for (int i = 0; i < nToDrawn * maxSize; i++)
+        for (int i = 0; i < nToDraw * maxSize * nPlayers; i++)
         {
             if (i % maxSize == 0)
             {
