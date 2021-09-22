@@ -122,12 +122,14 @@ public struct CardGameSimData
 
     public JobHandle ScheduleJobsForGameRound(JobHandle precedingGameRoundHandle)
     {
-        var handle1 = genDeck.Schedule(nSims * nPlayers, 32, precedingGameRoundHandle);
-        var handle2 = shuffleDeck.Schedule(nSims * nPlayers, 32, handle1);
-        var handle3 = drawHand.Schedule(nSims * nPlayers, 32, handle2);
-        var handle4 = playCard.Schedule(nSims * nPlayers, 32, handle3);
-        var handle5 = evaluateRound.Schedule(nSims * nPlayers, 32, handle4);
-        var handle6 = removeDeadCards.Schedule(nSims * nPlayers, 32, handle5);
+        int defaultBatchCount = 32;
+
+        var handle1 = genDeck.Schedule(nSims * nPlayers, defaultBatchCount, precedingGameRoundHandle);
+        var handle2 = shuffleDeck.Schedule(nSims * nPlayers, defaultBatchCount, handle1);
+        var handle3 = drawHand.Schedule(nSims * nPlayers, defaultBatchCount, handle2);
+        var handle4 = playCard.Schedule(nSims * nPlayers, defaultBatchCount, handle3);
+        var handle5 = evaluateRound.Schedule(nSims * nPlayers, defaultBatchCount, handle4);
+        var handle6 = removeDeadCards.Schedule(nSims * nPlayers, defaultBatchCount, handle5);
         
         return handle6;
     }
