@@ -7,6 +7,8 @@ Current Benchmark
 ----------------
 (Intel i7-9700k CPU @ 3.6 GHz (8 cpus))
 
+![Benchmark Snapshot](https://github.com/ngomes82/CardGameSim-UnityDOTSTest/blob/main/profiler_benchmark_snapshot.PNG)
+
 1.1ms per frame for 1000 games simulating 10 turns
 
 Rounds consist of:
