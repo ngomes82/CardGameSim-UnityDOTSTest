@@ -22,9 +22,8 @@ public class CardGameSim : UnityEngine.MonoBehaviour
     public int nGamesToDrawDebugLogs = 6;
 
 
-    public CardGameSimData simData;
-
-    public JobHandle completionHandle;
+    private CardGameSimData simData;
+    private JobHandle simCompletionHandle;
 
     void Start()
     {
@@ -42,13 +41,12 @@ public class CardGameSim : UnityEngine.MonoBehaviour
             prevRoundJob = simData.ScheduleJobsForGameRound(prevRoundJob);
         }
 
-        completionHandle = prevRoundJob;
+        simCompletionHandle = prevRoundJob;
     }
 
     private void LateUpdate()
     {
-        completionHandle.Complete();
-            
+        simCompletionHandle.Complete();
         DrawDebugString(deckDebug, nGamesToDrawDebugLogs, simData.deckSize, simData.deckCount, simData.decks);
         DrawDebugString(handDebug, nGamesToDrawDebugLogs, simData.handSize, simData.handCount, simData.hands);
         DrawDebugString(inPlayDebug, nGamesToDrawDebugLogs, simData.maxCardsInPlay, simData.inPlayCount, simData.inPlay);
