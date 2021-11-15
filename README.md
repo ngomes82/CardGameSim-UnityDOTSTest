@@ -9,7 +9,7 @@ Current Benchmark
 
 ![Benchmark Snapshot](https://github.com/ngomes82/CardGameSim-UnityDOTSTest/blob/main/profiler_benchmark_snapshot.PNG)
 
-~1.2ms per frame for 1000 games simulating 10 turns
+~1.2ms per frame for 1000 games simulating 10 turns per frame
 
 Rounds consist of:
 1) Generate Deck (if deck is empty)
